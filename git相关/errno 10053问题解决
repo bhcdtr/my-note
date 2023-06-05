@@ -1,11 +1,11 @@
-完整错误：
+#完整错误：
 
- 1 fatal: unable to access 'https://xxxxxx': OpenSSL SSL_read: Connection was aborted, errno 10053 
+ >1 fatal: unable to access 'https://xxxxxx': OpenSSL SSL_read: Connection was aborted, errno 10053 
 
-1、Git默认限制推送的大小，运行命令更改限制大小即可 增加缓冲
+####1、Git默认限制推送的大小，运行命令更改限制大小即可 增加缓冲
 
- git config --global http.postBuffer 524288000 
+ >git config --global http.postBuffer 524288000 
 
-2、更改网络认证设置
+####2、更改网络认证设置
 
- git config --global http.sslVerify "false"
+ >git config --global http.sslVerify "false"

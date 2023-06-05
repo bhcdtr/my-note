@@ -1,0 +1,35 @@
+# github 配置SSL访问私有仓库
+## 1、生成秘钥
+### 1.1 配置全局用户信息
+> #配置用户
+git config --global user.name "xxx"
+git config --global user.email "xxx@xxx.com"
+### 1.2 生成秘钥信息
+#### 1.2.1 生成RSA算法秘钥
+> #生成秘钥
+ssh-keygen -t rsa -C "xxx@xxx.com"
+#### 1.2.2 生成Ed25519算法秘钥
+> #生成秘钥
+ssh-keygen -t ed25519 -C "xxx@xxx.com"
+注意事项: openssh默认不再支持ssh-rsa算法，优先采用Ed25519算法。
+
+## 2、提取公钥
+### 2.1 获取RSA算法公钥
+> #获取公钥
+cat ~/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2rn3gFyV24djbyzfTJy194Zm2G77M4uLeiUq3aK0E9ZX16m5xjKjRSKuQ/ToPvoZxGrt3Rlp3ZXCT6FhiFYR6871w/bfWN4zwqwZZWIZcZuI+yIIzc8PeNC/gfmdsrQQCVzZJZk8NaFjiRMiqxpkvKLGalHCJR11BkyWW5dhRpcKbrPWyjWd8zE5aRkWMxYhwAw7Vk7pdx8LtMqsBZdmFJx6ypmPZZx8lmI+ti6fhdFOa5AVC0Jj3o0hcoNAIsofE2fraVSZhTFfK2ynv5iwQtSmLyFDgsXHDU5TM06Rz45ujy1L8nqe6nr5qenX1vCac5oPBmN63RSFeYXOkxGpy+LU/KwtfpEv5nOJOG4SMtaUVRgTWdmgM5bZEvpjEtAJJBuBEhHAiyFwC/c5RMll7rnFySTZoGZUhZQSSzBQgLuEIWzQE/v2QTCzwA5tfk3mpJ3mFdjZNNe40fwo69av0swnjJzDkhAXckeAc=xxx@xxx.com
+
+### 2.2 获取ed25519算法公钥
+> #获取公钥
+cat ~/.ssh/id_ed25519.pub
+.....
+
+## 3、配置远程仓库SSH（本文以github为例）上的公钥
+> 1. 登陆github帐户。点击你的头像，然后 Settings -> 左栏点击 SSH and GPG keys -> 点击 New SSH key，然后你复制上面的公钥内容，粘贴进“Key”文本域内。 title可自定义。
+> 2. 点击 Add key。
+> 3. 测试连接
+测试访问
+ssh -T git@github.com
+ssh -vT git@github.com
+返回如下提示则配置成功
+Hi xxxx! You've successfully authenticated, but GitHub does not provide shell access.
