@@ -1,0 +1,26 @@
+> SOAP（Simple Object Access Protocol）是一种基于 XML 的通信协议，用于在 Web 上交换结构化数据。Postman 可以用于测试和调试各种类型的 API，可以使用独立于平台的消息传递协议规范 SOAP 进行 HTTP 调用。
+
+# 1. 创建一个新的请求
+> 打开 Postman，新建一个请求。设置请求方法为 POST，并将 URL 设置为 SOAP API 的端点 URL。
+
+# 2. 设置 HTTP Headers
+> 在请求头中，我们需要设置 Content-Type 为 text/xml，并设置 SOAPAction 为调用的 **API 方法**。
+将 Headers 标签页中默认生成的 Content-Typeapplication/xml字段取消勾选。
+新建 Content-Type 字段，值填写为text/xml。
+新建 SOAPAction 字段，值填写为"#POST"（即为"#MethodName",可以在接口调试页面查看）。注意，有引号。
+
+# 3. 构造 SOAP 请求体
+> 在 Body 标签页中，我们需要构造 SOAP 请求体。
+首先，我们需要使用 XML 格式定义 SOAP Envelope、Header 和 Body。点击 Body，选择 raw ，并选择 XML ，并在文本区域输入 XML内容。下面是请求格式举例，这些都可以在接口的测试页面找到
+```C#
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <Execute xmlns="http://localhost/">
+      <xml>这里是请求内容</xml>
+    </Execute>
+  </soap:Body>
+</soap:Envelope> 
+```
+# 4. 发送请求等待响应
+
