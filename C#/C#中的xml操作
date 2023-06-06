@@ -1,0 +1,75 @@
+## xml操作常用方法
+``` 
+using System.Xml;
+//初始化一个xml实例
+XmlDocument xml=new XmlDocument();
+ 
+//导入指定xml文件
+xml.Load(path);
+xml.Load(HttpContext.Current.Server.MapPath("~/file/bookstore.xml"));
+ 
+//指定一个节点
+XmlNode root=xml.SelectSingleNode("/root");
+ 
+//获取节点下所有直接子节点
+XmlNodeList childlist=root.ChildNodes;
+ 
+//判断该节点下是否有子节点
+root.HasChildNodes;
+ 
+//获取同名同级节点集合
+XmlNodeList nodelist=xml.SelectNodes("/Root/News");
+ 
+//生成一个新节点
+XmlElement node=xml.CreateElement("News");
+ 
+//将节点加到指定节点下，作为其子节点
+root.AppendChild(node);
+ 
+//将节点加到指定节点下某个子节点前
+root.InsertBefore(node,root.ChildeNodes[i]);
+ 
+//为指定节点的新建属性并赋值
+node.SetAttribute("id","11111");
+ 
+//为指定节点添加子节点
+root.AppendChild(node);
+ 
+//获取指定节点的指定属性值
+string id=node.Attributes["id"].Value;
+ 
+//获取指定节点中的文本
+string content=node.InnerText;
+
+// 加载或创建XML文档,转化为字符串对象
+string xmlString = xmlDoc.OuterXml;
+ 
+//保存XML文件
+string path=Server.MapPath("~/file/bookstore.xml");
+xml.Save(path);
+//or use :xml.Save(HttpContext.Current.Server.MapPath("~/file/bookstore.xml"));
+```
+## 具体实例:C#中有一段xml字符串,为其中一个节点添加一个新的子节点
+
+```C#
+string xmlString = "your xml string here";
+// 这一行定义了一个字符串变量，用来存储你的XML字符串。
+
+XmlDocument xmlDoc = new XmlDocument();
+// 这一行创建了一个新的XmlDocument对象，用来表示XML文档。
+
+xmlDoc.LoadXml(xmlString);
+// 这一行调用了XmlDocument对象的LoadXml方法，将XML字符串加载到XmlDocument对象中。
+
+XmlNode entryNode = xmlDoc.SelectSingleNode("//entry");
+// 这一行使用SelectSingleNode方法在XML文档中查找第一个匹配XPath表达式“//entry”的节点，并将其存储在entryNode变量中。
+
+XmlElement newNode = xmlDoc.CreateElement("newNodeName");
+// 这一行调用了XmlDocument对象的CreateElement方法，创建了一个新的XmlElement对象，并指定了它的名称。
+
+newNode.InnerText = "new node value";
+// 这一行设置了新XmlElement对象的InnerText属性，即它包含的文本内容。
+
+entryNode.AppendChild(newNode);
+// 这一行调用了XmlNode对象的AppendChild方法，将新XmlElement对象添加为entryNode节点的子节点
+```
