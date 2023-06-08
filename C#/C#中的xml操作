@@ -48,6 +48,16 @@ string xmlString = xmlDoc.OuterXml;
 string path=Server.MapPath("~/file/bookstore.xml");
 xml.Save(path);
 //or use :xml.Save(HttpContext.Current.Server.MapPath("~/file/bookstore.xml"));
+
+//xml转为json
+string jsonString = JsonConvert.SerializeXmlNode(xmlDoc);
+
+//xml转为json并去掉根节点
+string jsonString = JsonConvert.SerializeXmlNode(xmlDoc, Formatting.None, true);
+SerializeXmlNode()方法的第二个参数是一个Formatting枚举值，用于指定生成的JSON字符串的格式。
+可以将它设置为Formatting.Indented或Formatting.None
+当设置为Formatting.Indented时，生成的JSON字符串将包含缩进和换行符，以提高可读性
+当设置为Formatting.None时，生成的JSON字符串将不包含任何额外的空白字符，以减小字符串的大小。
 ```
 ## 具体实例:C#中有一段xml字符串,为其中一个节点添加一个新的子节点
 

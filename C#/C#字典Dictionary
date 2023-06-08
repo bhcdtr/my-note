@@ -1,0 +1,38 @@
+## 字典的循环遍历
+### 1. 同时遍历键和值
+> 可以使用foreach循环来遍历字典。字典中的每个元素都是一个`KeyValuePair<TKey, TValue>`类型的对象，其中Key属性表示键，Value属性表示值。
+
+```
+Dictionary<string, int> dict = new Dictionary<string, int>()
+{
+    {"apple", 1},
+    {"banana", 2},
+    {"cherry", 3}
+};
+
+foreach (KeyValuePair<string, int> kvp in dict)
+{
+    Console.WriteLine("Key: {0}, Value: {1}", kvp.Key, kvp.Value);
+}
+
+这段代码将输出以下内容：
+
+Key: apple, Value: 1
+Key: banana, Value: 2
+Key: cherry, Value: 3
+```
+
+### 2.分别遍历键和值
+
+> 可以使用Keys和Values属性分别遍历字典中的所有键和值。例如：
+```
+foreach (string key in dict.Keys)
+{
+    Console.WriteLine("Key: {0}", key);
+}
+
+foreach (int value in dict.Values)
+{
+    Console.WriteLine("Value: {0}", value);
+}
+```
