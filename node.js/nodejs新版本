@@ -1,0 +1,19 @@
+## nodejs新版本(v17以上)引起的：digital envelope routines::unsupported 
+
+### 1.问题来源
+>node.js 的版本问题
+因为 node.js V17版本中最近发布的OpenSSL3.0, 而OpenSSL3.0对允许算法和密钥大小增加了严格的限制，可能会对生态系统造成一些影响。故此以前的项目在升级 nodejs 版本后会报错。
+
+### 2.解决方案
+```json
+ 1.推荐：修改package.json，在相关构建命令之前加入SET NODE_OPTIONS=--openssl-legacy-provider
+ 
+"scripts": {
+   "serve": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
+   "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build"
+},
+
+2.当次运行的命令窗口有效：在你当前文件的cmd命令窗口输入：SET NODE_OPTIONS=--openssl-legacy-provider， 回车后输入 npm运行命令
+
+3.就是nodejs版本回退到16版本，这样就可以直接运行了。
+```
