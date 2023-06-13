@@ -1,0 +1,5 @@
+## MySQL中创建带特殊字符的数据库
+```mysql
+    数据库名加反引号
+    例如:create database `d-d`;    
+```
