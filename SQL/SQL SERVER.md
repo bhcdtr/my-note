@@ -25,3 +25,10 @@ GROUP BY invClass, invcode, invname, cInvStd
 即'02006' AS invcode
 
 ```
+## 删除无关联数据
+
+```sql
+    可以使用以下SQL语句来删除B表中与A表无关的数据：
+
+    DELETE FROM B WHERE B.id NOT IN (SELECT id FROM A);
+```
