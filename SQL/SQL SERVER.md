@@ -1,4 +1,5 @@
-## 聚合函数应用
+# 聚合函数应用
+
 ```sql
 invClass	invcode	     invname	   cInvStd	      iQuantity
 -------------------------------------------------------------------------------
@@ -24,4 +25,12 @@ GROUP BY invClass, invcode, invname, cInvStd
 如果您想让高硅硅锰的"invcode" 固定为 "02006"，可以在查询中直接指定 "invcode" 的值为 "02006"，
 即'02006' AS invcode
 
+```
+
+## 删除无关联数据
+
+```sql
+    可以使用以下SQL语句来删除B表中与A表无关的数据：
+
+    DELETE FROM B WHERE B.id NOT IN (SELECT id FROM A);
 ```
