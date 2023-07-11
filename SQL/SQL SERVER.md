@@ -1,4 +1,5 @@
-## 聚合函数应用
+# 聚合函数应用
+
 ```sql
 invClass	invcode	     invname	   cInvStd	      iQuantity
 -------------------------------------------------------------------------------
@@ -25,6 +26,7 @@ GROUP BY invClass, invcode, invname, cInvStd
 即'02006' AS invcode
 
 ```
+
 ## 删除无关联数据
 
 ```sql
