@@ -23,6 +23,9 @@ x：1
 属主：u（user）
 数组：g（group）
 其他：o（other）
++ ：为指定的用户类型增加权限
+- ：去除指定用户类型的权限
+= ：设置指定用户权限的设置，即将用户类型的所有权限重新设置
 chmod u+x test 更改文件属性
 chmod 777 test 更改文件属性，通过累加数字的方式
 chown root.root test 更改文件属主/属组
