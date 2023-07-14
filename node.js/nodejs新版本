@@ -1,4 +1,4 @@
-## nodejs新版本(v17以上)引起的：digital envelope routines::unsupported 
+-## nodejs新版本(v17以上)引起的：digital envelope routines::unsupported 
 
 ### 1.问题来源
 >node.js 的版本问题
@@ -15,5 +15,5 @@
 
 2.当次运行的命令窗口有效：在你当前文件的cmd命令窗口输入：SET NODE_OPTIONS=--openssl-legacy-provider， 回车后输入 npm运行命令
 
-3.就是nodejs版本回退到16版本，这样就可以直接运行了。
+3.就是*/nodejs版本回退到16版本，这样就可以直接运行了。*
 ```
